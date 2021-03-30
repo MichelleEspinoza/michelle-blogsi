@@ -2,7 +2,7 @@
 @section ('contenido')
 	<div class="row">
 		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-			<h3>Nuevo Venta</h3>
+			<h3 class="text-secondary">Nuevo Venta</h3>
 
 
             @if ($errors->any())
@@ -17,7 +17,7 @@
 			
             {{Form::open(array('url'=>'ventas/venta','method'=>'POST','autocomplete'=>'off'))}}
             @csrf
-            <div class="row">
+            <div class="row text-dark">
                 <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
                     <div class="form-group">
                         <label class="form-label" for="cliente">Cliente</label>
@@ -51,7 +51,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row text-dark">
                 <div class="panel panel-primary">
                     <div class="panel-body">
                         <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">

@@ -2,7 +2,7 @@
 @section ('contenido')
 	<div class="row">
 		<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12">
-			<h3>Editar Categoría {{$categoria->nombre}}</h3>
+			<h3 class="text-secondary">Editar Categoría {{$categoria->nombre}}</h3>
 
 
             @if ($errors->any())
@@ -18,12 +18,12 @@
             <form action="{{ route('categoria.update',$categoria->id) }}" method="POST">
                 @csrf
                 @method('PUT')
-            <div class="form-group">
+            <div class="form-group text-dark">
             	<label for="nombre">Nombre</label>
             	<input type="text" class="form-control" name="nombre" value="{{$categoria->nombre}}" placeholder="Nombre...">
                 
             </div>
-            <div class="form-group">
+            <div class="form-group text-dark">
             	<label for="descripcion">Descripción</label>
             	<input type="text" class="form-control" name="descripcion" value="{{$categoria->descripcion}}" placeholder="Descripción...">
                 

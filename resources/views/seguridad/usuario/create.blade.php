@@ -2,7 +2,7 @@
 @section ('contenido')
 	<div class="row">
 		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-			<h3>Nueva Usuario</h3>
+			<h3 class="text-secondary">Nueva Usuario</h3>
 
 
             @if ($errors->any())
@@ -17,10 +17,10 @@
 			
             {{Form::open(array('url'=>'seguridad/usuario','method'=>'POST','autocomplete'=>'off'))}}
             @csrf
-            <div class="form-group row">
+            <div class="form-group row text-dark">
                 <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nombre') }}</label>
 
-                <div class="col-md-6">
+                <div class="col-md-6 text-dark">
                     <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
                     @error('name')
@@ -31,10 +31,10 @@
                 </div>
             </div>
 
-            <div class="form-group row">
+            <div class="form-group row text-dark">
                 <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail ') }}</label>
 
-                <div class="col-md-6">
+                <div class="col-md-6 ">
                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
                     @error('email')
@@ -45,7 +45,7 @@
                 </div>
             </div>
 
-            <div class="form-group row">
+            <div class="form-group row text-dark">
                 <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                 <div class="col-md-6">
@@ -59,7 +59,7 @@
                 </div>
             </div>
 
-            <div class="form-group row">
+            <div class="form-group row text-dark">
                 <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirmar Password') }}</label>
 
                 <div class="col-md-6">

@@ -2,7 +2,7 @@
 @section ('contenido')
 	<div class="row">
 		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-			<h3>Editar Usuario {{$usuario->nombre}}</h3>
+			<h3 class="text-secondary">Editar Usuario {{$usuario->nombre}}</h3>
 
 
             @if ($errors->any())
@@ -18,7 +18,7 @@
             <form action="{{ route('usuario.update',$usuario->id) }}" method="POST">
                 @csrf
                 @method('PUT')
-                <div class="form-group row">
+                <div class="form-group row text-dark">
                     <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nombre') }}</label>
     
                     <div class="col-md-6">
@@ -32,7 +32,7 @@
                     </div>
                 </div>
     
-                <div class="form-group row">
+                <div class="form-group row text-dark">
                     <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail ') }}</label>
     
                     <div class="col-md-6">
@@ -46,7 +46,7 @@
                     </div>
                 </div>
     
-                <div class="form-group row">
+                <div class="form-group row text-dark">
                     <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
     
                     <div class="col-md-6">
@@ -60,7 +60,7 @@
                     </div>
                 </div>
     
-                <div class="form-group row">
+                <div class="form-group row text-dark">
                     <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirmar Password') }}</label>
     
                     <div class="col-md-6">

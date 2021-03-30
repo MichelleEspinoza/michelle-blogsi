@@ -2,7 +2,7 @@
 @section ('contenido')
 	<div class="row">
 		<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12">
-			<h3>Nueva Categoría</h3>
+			<h3 class="text-secondary">Nueva Categoría</h3>
 
 
             @if ($errors->any())
@@ -17,17 +17,17 @@
 			
             {{Form::open(array('url'=>'almacen/categoria','method'=>'POST','autocomplete'=>'off'))}}
             @csrf
-            <div class="form-group">
+            <div class="form-group text-dark">
             	<label for="nombre" class="form-label">Nombre</label>
             	<input type="text" class="form-control" name="nombre" placeholder="Nombre...">
                 
             </div>
-            <div class="form-group">
+            <div class="form-group text-dark">
             	<label for="descripcion" class="form-label">Descripción</label>
             	<input type="text" class="form-control" name="descripcion" placeholder="Descripción...">
                 
             </div>
-            <div class="form-group">
+            <div class="form-group text-dark">
             	<button class="btn btn-primary" type="submit">Guardar</button>
             	<button class="btn btn-danger" type="reset">Cancelar</button>
             </div>

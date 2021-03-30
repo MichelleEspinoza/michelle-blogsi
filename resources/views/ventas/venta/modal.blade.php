@@ -8,10 +8,10 @@
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-                <h4 class="modal-title">Cancelar Venta</h4>
+                <h4 class="modal-title text-dark">Cancelar Venta</h4>
 			</div>
 			<div class="modal-body">
-				<p class="fs-5">Confirme si desea Cancelar la Venta</p>
+				<p class="fs-5 text-dark">Confirme si desea Cancelar la Venta</p>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-bs-dismiss="modal">Cerrar</button>

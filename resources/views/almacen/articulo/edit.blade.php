@@ -2,7 +2,7 @@
 @section ('contenido')
 	<div class="row">
 		<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12">
-			<h3>Editar Articulo {{$articulo->nombre}}</h3>
+			<h3 class="text-secondary">Editar Articulo {{$articulo->nombre}}</h3>
 
 
             @if ($errors->any())
@@ -20,7 +20,7 @@
             <form action="{{ route('articulo.update',$articulo->id)}}" method="POST" autocomplete="off" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
-                <div class="row">
+                <div class="row text-dark">
                     <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
                         <div class="form-group">
                             <label for="nombre">Nombre</label>
