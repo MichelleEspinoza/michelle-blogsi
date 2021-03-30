@@ -1,9 +1,9 @@
 <template>
     <div class="container">
         <div class="cambs border-yellow">
-            <h4 class="mt-4 mx-3 text-center">Tipo de cambio hoy <span class="text-success">{{result.date}}</span></h4>
+            <h4 class="mt-4 mx-3 text-center"><span class="text-dark">Tipo de cambio hoy </span> <span class="text-success"> {{result.date}}</span></h4>
             <div v-if="result" class="content">
-               <h5 class="text-center mb-3"> <span class="fw-bold">1 </span> USD = <span class="fw-bold" v-if="result.rates">{{result.rates.MXN}}</span> MXN</h5>
+               <h5 class="text-center mb-3 text-dark"> <span class="fw-bold">1 </span> USD = <span class="fw-bold" v-if="result.rates">{{result.rates.MXN}}</span> MXN</h5>
                <img src="https://www.eldolar.info/c/el-dolar-384.png?pqudxw"  width="60" class="rounded mx-auto d-block" alt="...">
             </div>
         </div>
