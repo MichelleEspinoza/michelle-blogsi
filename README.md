@@ -20,7 +20,12 @@ XAMPP para Windows 8.0.3
 
 _https://www.apachefriends.org/xampp-files/8.0.3/xampp-windows-x64-8.0.3-0-VS16-installer.exe_
 
-_Descargar paquete Xampp_
+_https://www.php.net/distributions/php-8.0.2.tar.gz_
+
+
+_Descargar e instalar paquete Xampp_
+
+_Descargar e instlar PHP_
 
 ## Despliegue 📦
 
