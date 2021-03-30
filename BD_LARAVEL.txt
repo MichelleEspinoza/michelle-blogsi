@@ -1,0 +1,85 @@
+ Schema::create('categoria', function (Blueprint $table) {
+            $table->idcategoria();
+            $table->string('nombre',50);
+            $table->text('descripcion');
+            $table->boolean('condicion ');
+            $table->timestamps();//created_At update_at
+        });
+        Schema::create('articulo',function(Blueprint $table){
+            $table->idarticulo();
+            $table->unsignedBigInteger('idcategoria');
+            $table->foreign('idcategoria')->references('idcategoria')->on('categoria');
+            $table->string('codigo',50);
+            $table->string('nombre',100);
+            $table->integer('stock');
+            $table->text('descripcion');
+            $table->string('imagen',50);
+            $table->string('estado',50);
+            $table->timestamps();//created_At update_at
+        });
+        Schema::create('persona',function(Blueprint $table){
+            $table->idpersona();
+            $table->string('tipo_persona',20);
+            $table->string('nombre',100);
+            $table->string('tipo_documento',20);
+            $table->string('num_documento',15);
+            $table->string('direccion',70);
+            $table->string('telefono',15);
+            $table->string('email',50);
+            $table->timestamps();//created_At update_at
+        });
+        Schema::create('ingreso',function(Blueprint $table){
+            $table->idingreso();
+            $table->unsignedBigInteger('idproveedor');
+            $table->foreign('idproveedor')->references('idpersona')->on('persona');
+            $table->string('tipo_comprobante',20);
+            $table->string('serie_comprobante',7);
+            $table->string('num_comprobante',10);
+           // $table->dateTime('fecha_hora ', $precision = 0); es lo mismo que timestamps
+            $table->decimal('impuesto', $precision = 8, $scale = 2);
+            $table->string('estado',20);
+            $table->timestamps();//created_At update_at
+        });
+        Schema::create('detalle_ingreso',function(Blueprint $table){
+            $table->iddetalle_ingreso();
+            $table->unsignedBigInteger('idingreso');
+            $table->foreign('idingreso')->references('idingreso')->on('ingreso');
+            $table->unsignedBigInteger('idarticulo');
+            $table->foreign('idarticulo')->references('idarticulo')->on('articulo');
+            $table->integer('cantidad');
+            $table->decimal('precio_compra', $precision = 11, $scale = 2);
+            $table->decimal('precio_venta', $precision = 11, $scale = 2);
+            $table->timestamps();//created_At update_at
+        });
+        Schema::create('venta',function(Blueprint $table){
+            $table->idventa();
+            $table->unsignedBigInteger('idcliente');
+            $table->foreign('idcliente ')->references('idpersona')->on('persona');
+            $table->string('tipo_comprobante',20);
+            $table->string('serie_comprobante',7);
+            $table->string('num_comprobante',10);
+              // $table->dateTime('fecha_hora ', $precision = 0); es lo mismo que timestamps
+            $table->decimal('impuesto', $precision = 4, $scale = 2);
+            $table->decimal('total_venta', $precision = 11, $scale = 2);
+            $table->string('estado',20);
+            $table->timestamps();//created_At update_at
+        });
+        Schema::create('detalle_venta',function(Blueprint $table){
+            $table->iddetalle_venta();
+            $table->unsignedBigInteger('idventa');
+            $table->foreign('idventa')->references('idventa')->on('venta');
+            $table->unsignedBigInteger('idarticulo');
+            $table->foreign('idarticulo')->references('idarticulo')->on('articulo');
+            $table->integer('cantidad ');
+            $table->decimal('precio_venta', $precision = 11, $scale = 2);
+            $table->decimal('descuento', $precision = 11, $scale = 2);
+            $table->timestamps();//created_At update_at
+        });
+
+ Schema::dropIfExists('categoria');
+        Schema::dropIfExists('articulo');
+        Schema::dropIfExists('persona');
+        Schema::dropIfExists('ingreso');
+        Schema::dropIfExists('detalle_ingreso');
+        Schema::dropIfExists('venta');
+        Schema::dropIfExists('detalle_venta');

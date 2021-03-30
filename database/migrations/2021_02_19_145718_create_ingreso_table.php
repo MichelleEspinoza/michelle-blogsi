@@ -1,0 +1,39 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateIngresoTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('ingreso', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('idproveedor');
+            $table->foreign('idproveedor')->references('id')->on('persona');
+            $table->string('tipo_comprobante',20);
+            $table->string('serie_comprobante',7);
+            $table->string('num_comprobante',10);
+           // $table->dateTime('fecha_hora ', $precision = 0); es lo mismo que timestamps
+            $table->decimal('impuesto', $precision = 8, $scale = 2);
+            $table->string('estado',20);
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('ingreso');
+    }
+}
