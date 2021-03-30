@@ -1,0 +1,95 @@
+drop database if exists dbventaslaravel;
+create database if not exists dbventaslaravel;
+use dbventaslaravel;
+
+CREATE TABLE IF NOT EXISTS categoria(
+  idcategoria INT NOT NULL AUTO_INCREMENT,
+  nombre VARCHAR(50) NOT NULL,
+  descripcion VARCHAR(256) NULL,
+  condicion BOOLEAN NOT NULL,
+  PRIMARY KEY (idcategoria));
+  
+  CREATE TABLE IF NOT EXISTS articulo(
+  idarticulo INT NOT NULL AUTO_INCREMENT,
+  idcategoria INT NOT NULL,
+  codigo VARCHAR(50) NULL,
+  nombre VARCHAR(100) NOT NULL,
+  stock INT NOT NULL,
+  descripcion VARCHAR(512) NULL,
+  imagen VARCHAR(50) NULL,
+  estado VARCHAR(20) NOT NULL,
+  PRIMARY KEY (idarticulo),
+  CONSTRAINT fk_articulo_categoria
+    FOREIGN KEY (`idcategoria`)
+    REFERENCES categoria(idcategoria));
+    
+    CREATE TABLE IF NOT EXISTS persona(
+  idpersona INT NOT NULL AUTO_INCREMENT,
+  tipo_persona VARCHAR(20) NOT NULL,
+  nombre VARCHAR(100) NOT NULL,
+  tipo_documento VARCHAR(20) NULL,
+  num_documento VARCHAR(15) NULL,
+  direccion VARCHAR(70) NULL,
+  telefono VARCHAR(15) NULL,
+  email VARCHAR(50) NULL,
+  PRIMARY KEY (idpersona));
+  
+  CREATE TABLE IF NOT EXISTS ingreso(
+  idingreso INT NOT NULL AUTO_INCREMENT,
+  idproveedor INT NOT NULL,
+  tipo_comprobante VARCHAR(20) NOT NULL,
+  serie_comprobante VARCHAR(7) NULL,
+  num_comprobante VARCHAR(10) NOT NULL,
+  fecha_hora DATETIME NOT NULL,
+  impuesto DECIMAL(4,2) NOT NULL,
+  estado VARCHAR(20) NOT NULL,
+  PRIMARY KEY (idingreso),
+  CONSTRAINT fk_ingreso_persona
+    FOREIGN KEY (idproveedor)
+    REFERENCES persona(idpersona));
+    
+    CREATE TABLE IF NOT EXISTS detalle_ingreso(
+  iddetalle_ingreso INT NOT NULL AUTO_INCREMENT,
+  idingreso INT NOT NULL,
+  idarticulo INT NOT NULL,
+  cantidad INT NOT NULL,
+  precio_compra DECIMAL(11,2) NOT NULL,
+  precio_venta DECIMAL(11,2) NOT NULL,
+  PRIMARY KEY (iddetalle_ingreso),
+  CONSTRAINT fk_detalle_ingreso_ingreso
+    FOREIGN KEY (idingreso)
+    REFERENCES ingreso(idingreso),
+  CONSTRAINT fk_detalle_ingreso_articulo
+    FOREIGN KEY (idarticulo)
+    REFERENCES articulo(idarticulo));
+    
+    CREATE TABLE IF NOT EXISTS venta(
+  idventa INT NOT NULL AUTO_INCREMENT,
+  idcliente INT NOT NULL,
+  tipo_comprobante VARCHAR(20) NOT NULL,
+  serie_comprobante VARCHAR(7) NOT NULL,
+  num_comprobante VARCHAR(10) NOT NULL,
+  fecha_hora DATETIME NOT NULL,
+  impuesto DECIMAL(4,2) NOT NULL,
+  total_venta DECIMAL(11,2) NOT NULL,
+  estado VARCHAR(20) NOT NULL,
+  PRIMARY KEY (idventa),
+  CONSTRAINT fk_venta_cliente
+    FOREIGN KEY (idcliente)
+    REFERENCES persona(idpersona));
+    
+    
+    CREATE TABLE IF NOT EXISTS detalle_venta(
+  iddetalle_venta INT NOT NULL AUTO_INCREMENT,
+  idventa INT NOT NULL,
+  idarticulo INT NOT NULL,
+  cantidad INT NOT NULL,
+  precio_venta DECIMAL(11,2) NOT NULL,
+  descuento DECIMAL(11,2) NOT NULL,
+  PRIMARY KEY (iddetalle_venta),
+  CONSTRAINT fk_detalle_venta_articulo
+    FOREIGN KEY (idarticulo)
+    REFERENCES articulo(idarticulo),
+  CONSTRAINT fk_detalle_venta_venta
+    FOREIGN KEY (idventa)
+    REFERENCES venta(idventa));
