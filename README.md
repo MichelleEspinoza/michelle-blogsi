@@ -31,7 +31,13 @@ _Descargar e instlar PHP_
 
 _Inicializar servidor MySQL_
 
+![image](https://user-images.githubusercontent.com/19162592/113060547-a459b900-9165-11eb-9855-6ec843f4ac22.png)
+
+_Después ejecute el siguiente comando en la terminal_
+
 _php artisan serve_
+
+_En caso de modificar los componentes de vue, ejecutar en  terminal el siguiente comando_
 
 _npm run watch_
 
